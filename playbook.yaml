@@ -1,0 +1,39 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - .config
+  tasks:
+    - name: create directory
+      file:
+        path: "{{ app.genpath }}/lib"
+        state: directory
+
+    - name: Copying files
+      copy:
+        src: "./templates/{{ item }}"
+        dest: "{{ app.genpath }}/{{ item }}"
+      with_items:
+        - .editorconfig
+        - .eslintignore
+        - .eslintrc.js
+        - .gitignore
+        - .npmignore
+        - .releaserc
+        - .travis.yml
+        - Dockerfile
+
+    - name: Creating Files from templates
+      template:
+        src: "{{ item }}.j2"
+        dest: "{{ app.genpath }}/{{ item }}"
+      with_items:
+        - LICENSE
+        - package.json
+        - README.md
+    - name: Creating index.js from templates
+      template:
+        src: "{{ item }}.j2"
+        dest: "{{ app.genpath }}/lib/{{ item }}"
+      with_items:
+        - index.js

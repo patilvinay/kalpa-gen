@@ -1,0 +1,25 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/no-dynamic-require */
+
+const path = require("path");
+
+const {{ app.baseModuleSlug }} = require(path.join(
+  __dirname,
+  "../node_modules/",
+  "{{ app.baseModule }}"
+));
+const deasync = require(path.join(__dirname, "../node_modules/", "deasync"));
+
+// eslint-disable-next-line no-unused-vars
+const process = async (obj, globalData) => {
+  const _obj = obj["{{ app.name }}"];
+  console.log("inside {{ app.name }}");
+  if (Object.prototype.hasOwnProperty.call(_obj, "ask")) {
+    deasync.sleep(25);
+  }
+  // To supress error */
+  {{  app.baseModuleSlug }}();
+  deasync.sleep(25);
+};
+
+exports.process = process;
