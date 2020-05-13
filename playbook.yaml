@@ -37,3 +37,7 @@
         dest: "{{ app.genpath }}/lib/{{ item }}"
       with_items:
         - index.js
+    - name: Installing NPM packages
+      shell: npm install -S deasync {{ app.baseModule }}
+      args:
+        chdir: "{{ app.genpath }}"

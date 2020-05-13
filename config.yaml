@@ -7,4 +7,4 @@ app:
   author: Vinay Patil
   maintainer: vinay.hpatil@gmail.com
   git: patilvinay/kalpa-simple-git
-  genpath: ../kalpa-simple-git
+  genpath: ./kalpa-simple-git

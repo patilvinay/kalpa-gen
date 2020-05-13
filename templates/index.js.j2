@@ -1,14 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-dynamic-require */
 
-const path = require("path");
-
-const {{ app.baseModuleSlug }} = require(path.join(
-  __dirname,
-  "../node_modules/",
-  "{{ app.baseModule }}"
-));
-const deasync = require(path.join(__dirname, "../node_modules/", "deasync"));
+const {{ app.baseModuleSlug }} = require("{{ app.baseModule }}");
+const deasync = require("deasync");
 
 // eslint-disable-next-line no-unused-vars
 const process = async (obj, globalData) => {
